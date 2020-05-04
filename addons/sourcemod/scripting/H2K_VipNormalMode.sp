@@ -505,13 +505,13 @@ public Action Event_BombPlanted(Event hEvent, const char[] chName, bool bDontBro
 	int client = GetClientOfUserId(hEvent.GetInt("userid"));
 	int PieniadzeGracza = GetEntProp(client, Prop_Send, "m_iAccount");
 	
-	// if (IsPlayerVip(client))
-	// {
-	// 	if (g_CvarChatMessages.BoolValue)
-	// 		PrintToChat(client, "%s As a VIP player you received %i$ for planting a Bomb.", VIP_PREFIX, g_CvarVipBombPlantedMoney.IntValue);
+	if (IsPlayerVip(client))
+	{
+		if (g_CvarChatMessages.BoolValue)
+			PrintToChat(client, "%s As a VIP player you received %i$ for planting a Bomb.", VIP_PREFIX, g_CvarVipBombPlantedMoney.IntValue);
 		
-	// 	SetEntProp(client, Prop_Send, "m_iAccount", g_CvarVipBombPlantedMoney.IntValue + PieniadzeGracza);
-	// }
+		SetEntProp(client, Prop_Send, "m_iAccount", g_CvarVipBombPlantedMoney.IntValue + PieniadzeGracza);
+	}
 }
 
 public Action Event_BombDefused(Event hEvent, const char[] chName, bool bDontBroadcast)
@@ -551,8 +551,8 @@ public Action Event_TagTable(Event hEvent, const char[] chName, bool bDontBroadc
 	char TagTabela[128];
 	g_CvarVipTagTabela.GetString(TagTabela, sizeof(TagTabela));
 	
-	if (IsPlayerVip(client) && g_CvarTagTabela.BoolValue)
-		// CS_SetClientClanTag(client, TagTabela);
+	// if (IsPlayerVip(client) && g_CvarTagTabela.BoolValue)
+	// 	CS_SetClientClanTag(client, TagTabela);
 	
 }
 
